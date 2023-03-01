@@ -1,0 +1,323 @@
+Q1- Write a program to calculate factorial of a number.
+
+#include <iostream>
+using namespace std;
+int main()
+{
+int j,number;
+cout << "Enter number" << "\n";
+cin >> number;
+int fact = 1;
+for (j=1;j<=number;j++){
+fact = fact*j;
+
+}
+cout << "Factorial is:" <<fact << "\n";
+return 0;
+}
+
+=====================================================================================================================================================================
+
+Q2- Write a program to print all Armstrong numbers between 100 to 500.
+
+#include<iostream>
+using namespace std;
+int main()
+{
+cout<<"Armstrong numbers in the range of 100 to 500 are :"<<endl;
+for(int i=0;i<500;i++)
+{
+int sum = 0;
+int t = i;
+while(t!=0)
+{
+sum = sum+((t%10)*(t%10)*(t%10));
+t = t/10;
+}
+if(sum == i)
+{
+cout << i <<"\n";
+}
+}
+return 0;
+}
+
+======================================================================================================================================================================
+
+Q3- Write a program to find the sum of n natural number.
+
+include <iostream>
+using namespace std;
+int main() {
+int num, sum;
+sum = 0;
+cout << "Enter a positive integer: ";
+cin >> num;
+for (int i = 1; i <= num; ++i) {
+sum += i;
+}
+cout << "Sum = " << sum << endl;
+return 0;
+}
+
+======================================================================================================================================================================
+
+Q4 - Write a program to reverse a given integer number.
+
+#include<iostream>
+using namespace std;
+int main()
+{
+int n,t,r,rev=0;
+cout<<"Enter any number : ";
+cin>>n;
+t=n;
+while(t>0)
+{
+
+r=t%10;
+t=t/10;
+rev=rev*10+r;
+
+}
+cout<<"Reverse of number "<<n<<" is "<<rev;
+return 0;
+}
+
+=====================================================================================================================================================================
+Q5 - Write a program to print the cross pattern given below (in the shape of X):
+* *
+* *
+*
+* *
+* *
+
+#include <iostream>
+using namespace std;
+int main() {
+int size = 5; // size of cross,use odd number
+for (int i = 0; i < size; i++) {
+for (int j = 0; j < size; j++) {
+if (i==j || i+j==size-1) {
+cout << "*";
+} else {
+cout << " ";
+}
+}
+cout << "\n";
+}
+return 0;
+}
+
+====================================================================================================================================================================
+
+Q6- Write a program to print alphabet diamond pattern:
+A
+ABC
+ABCDE
+ABCDEFG
+ABCDEFGHI
+ABCDEFG
+ABCDE
+ABC
+A
+
+
+#include <iostream>
+using namespace std;
+int main() {
+int size = 5;
+int alpha = 65;
+int num = 0;
+// upside pyramid
+for (int i = 1; i <= size; i++) {
+// printing spaces
+for (int j = size; j > i; j--) {
+cout << " ";
+}
+// printing alphabets
+for (int k = 0; k < i * 2 - 1; k++) {
+cout << ((char)(alpha+num++));
+}
+// set the number to 0
+num = 0;
+cout << "\n";
+}
+// downside pyramid
+for (int i = 1; i <= size - 1; i++) {
+// printing spaces
+for (int j = 0; j < i; j++) {
+cout << " ";
+}
+// printing alphabets
+for (int k = (size - i) * 2 - 1; k > 0; k--) {
+cout << ((char)(alpha+num++));
+}
+// set num to 0
+num = 0;
+cout << "\n";
+}
+return 0;
+}
+=====================================================================================================================================================================
+Q7- Write a program to print + pattern given below :
+*
+*
+*****
+*
+*
+
+#include <iostream>
+using namespace std;
+int main() {
+// size of plus, use odd number
+int size = 5;
+for (int i = 0; i < size; i++) {
+for (int j = 0; j < size; j++) {
+// print only stars in middle row
+if (i == size / 2) {
+cout << "*";
+}
+// other than middle row, print star only at index size/2
+else {
+if (j == size / 2) {
+cout << "*";
+} else {
+cout << " ";
+}
+}
+}
+cout << "\n";
+}
+return 0;
+}
+======================================================================================================================================================================
+
+Q8 - Write a C++ program to print a triangle of prime numbers upto given number of lines of the triangle.
+
+#include<iostream>
+#include<conio.h>
+using namespace std;
+int main()
+{
+int x1;
+int x2;
+int x3;
+int Number=3;
+int Banner=0;
+cout<<"Please enter the no of lines ";
+cin>> x1;
+int d= x1;
+for(x2=1;x2<= x1; x2++)
+{
+for(int e=1;e<=d;e++)
+{
+cout<<" ";
+}
+if(x2==1)
+{
+cout<<"2\n";
+}
+else
+{
+for(x3=0; x3!= x2;)
+{
+Banner=0;
+for ( int k=2;k<Number;k++)
+{
+if((Number%k)==0)
+Banner=1;
+}
+if(Banner==0)
+{ x3++;
+cout<<Number<<" ";
+}
+Number++;
+}
+cout<<"\n";
+}
+d--;
+}
+getch();
+return 0;
+}
+=====================================================================================================================================================================
+
+Q9- Write a C++ program to check whether a Number can be expressed as a Sum of Two Prime Numbers.
+Assignment Solutions
+
+Cracking the Coding Interview in C++ - Foundation
+
+#include<iostream>
+using namespace std;
+int main()
+{
+int num, i, j;
+int f1=1 , f2=1, f3=0;
+cout<<"Enter a +ve Integar : ";
+cin>>num;
+i=3 ;
+do
+{
+f1=1;
+f2=1;
+j=2;
+do
+{
+if(i%j==0)
+{
+f1=0;
+j=i;
+}
+j=2;
+do
+{
+if((num-i)%j==0)
+{
+f2=0;
+j=num-i;
+}
+j++;
+}
+while(j<num-i );
+if(f1==1 && f2==1)
+{
+cout<<num <<" = "<<i<<" + "<<num-i<<endl;
+f3=1;
+}
+j++;
+}
+while(j<i);
+i++;
+}
+while(i<=num/2);
+if(f3==0)
+{
+cout<<num<<" can not be expressed as sum of two prime numbers.";
+}
+}
+======================================================================================================================================================================
+
+Q10- Write a C++ program to print a rectangle out of *
+
+#include <iostream>
+#include <conio.h>
+using namespace std;
+int main()
+{
+int StarRows,StarColumns,i,j;
+cout<<"Please Enter the number of StarRows: ";
+cin>>StarRows;
+//Takes input from user for StarRows
+cout<<"Please Enter the number of StarColumns: ";
+cin>>StarColumns;
+//Takes input from user for StarColumns
+for(i=1; i<=StarRows; i++){//outer for loop
+for (j=1; j<=StarColumns; j++){//inner for loop
+cout<<"*";//print star
+}
+cout<<"\n";//move to next line
+}
+getch();
+return 0;
+}
