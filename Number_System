@@ -1,0 +1,88 @@
+Q1 - Print the sum of the first 5 decimal numbers from 1 to 5 in binary format.
+Sample Input:1,2,3,4,5
+Sample Output: 1111
+Code:
+
+#include <iostream>
+using namespace std;
+int main()
+{
+int sum=0;
+for(int i=1;i<=5;i++){
+sum=sum+i;
+}
+int ans = 0;
+int pw = 1;
+while (sum > 0) {
+int parity = sum % 2;
+ans += pw * parity;
+pw *= 10;
+sum /= 2;
+}
+cout << ans << endl;
+}
+=======================================================================================================================================================================
+Q2 - Given a natural number, find the number of 0’s in the binary representation of that number.
+Note: Don’t count the preceding zeros.
+For example: 001001 has 2 zeros as the first two zeros from left are preceding zeros.
+Sample Input:9
+Explanation: As the binary representation of 9 is 1001
+Sample Input: 6
+Sample Output: 1
+Explanation: As the binary representation of 6 is 0110
+Sample Output: 2
+code:
+#include <iostream>
+using namespace std;
+int main()
+{
+int num;
+cout<<"Enter the number : ";
+cin>>num;
+int count=0;
+while (num > 0) {
+int parity = num % 2;
+if(parity==0)
+{
+count++;
+}
+num /= 2;
+}
+cout << "The number of zeros is : " <<count<< endl;
+}
+=======================================================================================================================================================================
+Q3 - Given two binary numbers, return the greatest of these numbers in decimal format.
+Sample Input:1001 and 0100
+Sample Output: 9
+code:
+#include <iostream>
+using namespace std;
+int main()
+{
+int num1;
+int num2;
+cout<<"Enter the two binary numbers : ";
+cin>>num1>>num2;
+int pw = 1;
+int dec1=0;
+int dec2=0;
+while (num1 > 0) { //converting num1 to decimal
+int units_digit = num1 % 10;
+dec1 += pw * units_digit;
+num1 /= 10;
+pw *= 2;
+}
+pw=1;
+while (num2 > 0) { //converting num2 to decimal
+int units_digit = num2 % 10;
+dec2 += pw * units_digit;
+num2 /= 10;
+pw *= 2;
+}
+if(dec1>dec2) //comparing the decimal numbers dec1 and dec2
+{
+cout<<"The greater number is : "<<dec1;
+}else{
+cout<<"The greater number is : "<<dec2;
+}
+}
