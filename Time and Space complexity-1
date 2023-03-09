@@ -1,0 +1,52 @@
+Q1. Calculate the time complexity of the given function:
+void function(int n)
+      {
+      int i = 1, s = 1;
+      while (s < n) {
+      s = s + i;
+      i++;
+      }
+      }
+Explanation: We can define the ‘S’ terms according to the relation Si = Si-1 + i. Let k is the total number of
+iterations taken by the program
+When S>=n , then loop will stop at kth iterations,
+        ⇒ S>=n ⇒ S=n
+        ⇒ 2 + 2 + 3 + 4 + ......+ k = n
+        ⇒ 1 + (k * (k + 1))/2 = n
+        ⇒ k = n
+        k = √n
+        Hence, the time complexity is O(√n).
+=======================================================================================================================================================================        
+Q2. Calculate the time complexity of the given function:
+      void fun(int n)
+      {
+      if (n < 5) {
+      cout<<”College Wallah”;
+      }
+      else {
+      for (int i = 0; i < n; i++) {
+      cout<<i+” “;
+      }
+      }
+      }
+      Answer: O(1) in best case and O(n) in worst case.
+      Explanation: This program contains if and else conditions. Hence, there are 2 possibilities of time complexity.
+      If the value of n is less than 5, then we get only College Wallah as output and its time complexity will be O(1).
+      But, if n>=5, then for loop will execute and time complexity becomes O(n), which is considered the worst case
+      because it takes more time.
+====================================================================================================================================================================     
+Q3. Calculate the time complexity of the given function:
+        void fun(int a, int b){
+        while (a != b) {
+        if (a > b){
+        a = a - b;
+        }
+        else{
+        b = b - a;
+        }
+        }
+        }
+    Answer: Time complexity = O(1) in best case and O(max(a, b)) worst case.
+    Explanation: If the values of a and b are the same, then the while loop will not be executed. Hence, time
+    complexity will be O(1).
+    But if a!=b, then the while loop will be executed. Let a=16 and b=5;
