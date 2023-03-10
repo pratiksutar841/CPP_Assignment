@@ -1,0 +1,109 @@
+Q1 - Write a program to print the address of an integer variable whose value is input by the
+user.
+We can use the ‘&’ operator to get the address of the variable.
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    int num;
+    cin >> num;
+    cout << &num;
+    return 0;
+}
+=========================================================================================================================================================================
+Q2 - Write a program to find the product of 2 numbers using pointers
+We can use 2 pointers to point to our 2 variables whose product we need. Then we can take
+their product by accessing their values through the dereference operator.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    int num1, num2;
+    cin >> num1 >> num2;
+    int *ptr = &num1, *ptr2 = &num2;
+    int product = *ptr * *ptr2;
+    cout << product;
+    return 0;
+}
+=========================================================================================================================================================================
+Q3 - Write a function that returns the largest and the smallest number out of 3 given numbers.
+The main function should call this function to get the largest and smallest number and print
+the output.
+In this question, we need to return 2 values. We are going to use pointers to return one of them
+and make the function return the other one.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int largestAndSmallest(int num1, int num2, int num3, int *largest)
+{
+    *largest = max(num1, max(num2, num3));
+    return min(num1, min(num2, num3));
+}
+ 
+int main()
+{
+    int num1, num2, num3;
+    cin >> num1 >> num2 >> num3;
+    int largest;
+    int smallest = largestAndSmallest(num1, num2, num3, &largest);
+    cout << largest << ' ' << smallest;
+    return 0;
+}
+======================================================================================================================================================================
+Q4 - Implement the swap function using pointers.
+To swap the values of 2 variables, we can send both of them into our swap function as pointers.
+The swap function will work using a temp variable. To access the values of the variables, we’ll
+use the dereference operator on the pointers.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+void swap(int *num1, int *num2)
+{
+    int temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
+}
+ 
+int main()
+{
+    int num1, num2;
+    cin >> num1 >> num2;
+    swap(num1, num2);
+    cout << num1 << ' ' << num2;
+    return 0;
+}
+=======================================================================================================================================================================
+Q5 - Write a function that returns the first character, last character and the number of
+occurrences of ‘t’ in a string input by user.
+In this question, we need to return 3 values. We are going to use pointers to return 2 of them and
+make the function return the third one.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int fun(string s, char *first, char *last)
+{
+    *first = s[0];
+    *last = s[s.size() - 1];
+    int cnt = 0;
+    for (auto &ch : s)
+        if (ch == 't')
+            cnt++;
+    return cnt;
+}
+ 
+int main()
+{
+    string s;
+    cin >> s;
+    char first, last;
+    int count = fun(s, &first, &last);
+    cout << first << ' ' << last << ' ' << count;
+    return 0;
+}
+=======================================================================================================================================================================
