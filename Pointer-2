@@ -1,0 +1,112 @@
+Q1 -Write a program to print the kth element of an array using pointers.
+The first line of the input contains the size of the array and the value of k.
+The second line of input contains the elements of the array. You can assume that 0 <= k < size
+of the array.
+To access the k-th element of the array using a pointer, we can make the pointer point to the (a
++ k - 1) i.e. the address of the k-th element. Here ‘a’ is the name of the array.
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n, k;
+    cin >> n >> k;
+    int a[n];
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> a[i];
+    }
+    int *ptr = (a + k - 1);
+    cout << *ptr;
+    return 0;
+}
+========================================================================================================================================================================
+Q2 - Write a program to find the sum of all the elements of an array. Use pointers to traverse
+the array.
+The first line of the input contains the size of the array.
+The second line of input contains the elements of the array.
+The process for finding the sum of the array remains the same. The only difference is the way
+we access the elements. To access the elements of the array we start by making our pointer
+point to the first element of the array. We can use the dereference operator to get the value of
+the current element, and increment the pointer to move on to the next element.
+
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+    int n;
+    cin >> n;
+    int a[n];
+    int *ptr = a;
+    for(int i = 0; i < n; ++i) {
+        cin >> *ptr;
+        ptr++;
+    }
+    ptr = a;
+    int sum = 0;
+    for(int i = 0; i < n; i++) {
+        sum += *ptr;
+        ptr++;
+    }
+    cout << sum;
+ 
+    return 0;
+}
+=======================================================================================================================================================================
+Q3 - Write a program to traverse the array in the reverse order using pointers.
+The first line of the input contains the size of the array.
+The second line of input contains the elements of the array.
+This question is exactly the same as the previous one. The difference here is that we will initialise
+the pointer by the address of the last element of the array and to move in the reverse direction,
+we’ll decrement the pointer.
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    int n;
+    cin >> n;
+    int a[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    int *ptr = &a[n - 1];
+    while (1)
+    {
+        cout << *ptr << ' ';
+        if (ptr == a)
+            break;
+        ptr--;
+    }
+    return 0;
+}
+======================================================================================================================================================================
+Q4 - Using pointers, find the sum of elements present on the primary diagonal of the given n x
+n 2-D matrix.
+The first line of input contains the n, the size of the matrix.
+The next n lines contain the number of elements present in each row of the matrix.
+
+We already know how to access the diagonal elements of a square matrix, a[i][i], where ‘a’ is
+the name of the matrix.
+In this question, we need to access the same element but with the help of pointers. To do that
+we can simply write *(*(a + i) + i).
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    int a[n][n];
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            cin >> a[i][j];
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += *(*(a + i) + i);
+    cout << sum;
+    return 0;
+}
+========================================================================================================================================================================
