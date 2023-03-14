@@ -1,0 +1,108 @@
+Q1 - Given a number n, print the following pattern without using any loop. 
+a, a-5, a-10, ..., 0, 5, 10, ..., a-5, n
+InputY a = 16
+Expected jutputY 16, 11, 6, 1, -4, 1, 6, 11, 16
+ExplanatiMnX
+L Create a recursive fuactioa with parameters as a, m set as a aao flag variable set as true= The flag will be
+true if m is oecremeatiag aao false if m is iacremeatiag<
+L Priat m aao whea the flag is false aao the value of m is e8ual to a thea retura from the fuactio`
+L If the flag is true thea chec7
+L If m-5 is greater thaa zero thea recur for m-i
+L Else recur for m-5 aao set the flag to false, as aow we will be moviag backwarn
+L Else recur for m+5
+#include <iostream>
+using namespace std;
+void rec(int n,int m,bool flag)
+{
+               cout<<m<<" ";
+                // If we are moving back towards n and we have reached there, then we are done
+                if (flag == false && n == m)
+                        return;
+ 
+                // If we are moving towards 0 or negative.
+                if (flag) {
+                        // If m is greater, then 5, recur with true flag
+                        if (m - 5 > 0)
+                                rec(n, m - 5, true);
+ 
+                        else // recur with false flag
+                                rec(n, m - 5, false);
+                }
+ 
+                else // If flag is false.
+                        rec(n, m + 5, false);
+}
+int main()
+{
+    int n;
+    cout<<"Enter the number : ";
+    cin>>n;
+    rec(n,n,true);
+}
+======================================================================================================================================================================
+Q2 - Find m-th summation of first n natural numbers where m-th summation of first n natural
+numbers is defined as following:
+If m > 1: SUM(n, m) = SUM(SUM(n, m - 1), 1)
+Else :SUM(n, 1) = Sum of first n natural numbers.
+
+InputY a = /, m = 2
+Expected jutput Y 21
+#include <iostream>
+using namespace std;
+int sumofn(int n){
+    int ans = 0;
+    if(n == 1){
+        ans++;
+        return ans;
+    }
+    ans += n + sumofn(n-1);
+    return ans;
+}
+int rec(int n, int m) {
+        if (m == 1)
+        {
+            return sumofn(n);
+        }
+        int sum = rec(n, m - 1);
+        return sumofn(sum);
+}
+ 
+int main()
+{
+    int n,m;
+    cout<<"Enter the number n and m : ";
+    cin>>n;
+    cin>>m;
+    cout<<rec(n,m);
+}
+====================================================================================================================================================================
+Q3 - Given a number n which denotes the number of variables in the equation and a val which
+denotes the sum of these variables, count the number of such non-negative integral solutions
+that are possible.
+Sample Input: n=5¬val=1
+Sample Output:¬5
+
+#include<iostream>
+using namespace std;
+int count(int n,int val)
+{
+    int ans = 0;
+    if (n == 1 && val >=0) //base case
+        return 1;
+ 
+    // iterate the loop till equal the val
+    for (int i = 0;i <= val; i++){
+        ans += count(n-1, val-i);
+    }
+     
+    // return the total no possible solution
+    return ans;
+}
+int main()
+{
+    int n,val;
+    cout<<"Enter n and val : ";
+    cin>>n;
+    cin>>val;
+    cout<<count(n,val);
+}
