@@ -1,0 +1,121 @@
+Q1 - Given a string, remove adjacent duplicates characters from it. In other words, remove all
+consecutive same characters except one using recursion.
+
+Input: aabbbbcdd
+Output: abcd
+Input 2: abbcddaaaerr
+Output 2: abcdaer
+
+#include <bits/stdc++.h>
+using namespace std;
+void removeAdjacentDuplicates(string s , int index,  string& answer){
+    if(index >= s.size())return;
+    if(answer.back() != s[index])answer += s[index]; //answer.back() returns the reference to the last character of the string
+    removeAdjacentDuplicates(s , index + 1 , answer);
+}
+int main() {
+    string s;
+    cin>>s;
+    string answer = "";
+    removeAdjacentDuplicates(s, 0, answer);
+    cout<<answer<<endl;
+}
+
+=========================================================================================================================================================================
+Q2 - Write a recursive program to efficiently print the reverse of a given string in C++.
+
+
+Input 1: “collegewallah”
+Output 1: “hallawegelloc”
+Input 2: “pwskills”
+Output2: “sllikswp”
+
+#include <bits/stdc++.h>
+using namespace std;
+void reverse(string str, int index, int size)
+{
+    if(index == size)      // return when we have reached at the end of the string i.e. the last index
+    {
+        return;
+    }
+    char st = str[index];    // this char variable is used to store the character at ind index in the function stack
+    reverse(str, index+1, size);  // recursive call
+    cout << st;              // printing each character of the function stack
+}
+int main()
+{
+   string s="collegewallah";
+   reverse(s,0,s.size());
+}
+======================================================================================================================================================================
+Q3 - Given a string, check if it is a rotated palindrome or not using recursion. “baabcc” is a
+rotated palindrome as it is a rotation of palindrome “abccba”.
+
+Input 1: cbaabcd
+Output 1 : yes
+Explanation : if we rotate this string 3 times it will turn out to be abcdcba which is a palindrome.
+Input 2 : abcdedca
+Output 2 : no
+
+#include <bits/stdc++.h>
+using namespace std;
+bool isPalindrome(string s ,int i , int j){
+    if(i >= j)return true;
+    if(s[i] != s[j])return false;
+    return isPalindrome(s , i + 1 , j - 1);
+}
+bool isRotatedPalindrome(string s){
+  
+    for(int i=0;i<s.size();i++){
+        if(isPalindrome(s , 0 , s.size() - 1))return true;
+        s = s.back() + s; //this adds the last character of string to the front
+        s.pop_back(); //removes the last character of the string
+    }
+    return false;
+}
+int main() {
+    string s;
+    cin>>s;
+    string ans = "";
+    if(isRotatedPalindrome(s))cout<<"yes"<<endl;
+    else cout<<"no"<<endl;
+}
+=====================================================================================================================================================================
+Q4 - Write a program to merge 2 strings alternately using recursion.
+
+InputR:
+abcd
+efgh
+OutputR:
+aebfcgdh
+
+#include <bits/stdc++.h>
+using namespace std;
+void alternateConcat(string a, string b,int index1,int index2,string &s) 
+{ 
+    if(index1==a.size() && index2==b.size())
+    {
+        return;
+    }
+    if(index1==a.size())
+    {
+        s=s+b.substr(index2);
+        return;
+    }
+    if(index2==b.size())
+    {
+        s=s+a.substr(index1);
+        return;
+    }
+    s=s+a[index1++]+b[index2++];
+    alternateConcat(a,b,index1,index2,s);
+} 
+int main()
+{
+   string s="";
+   alternateConcat("po","abet",0,0,s);
+   cout<<s;
+    
+}
+
+======================================================================================================================================================================
